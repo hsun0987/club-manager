@@ -24,10 +24,10 @@ public class ClubEntity {
     private String description;
 
     // 1:N (board : post)
-//    @OneToMany(
-//            mappedBy = "club"
-//    )
-//    @Builder.Default
-//    private List<MemberEntity> members = List.of();
+    @OneToMany(
+            mappedBy = "club"
+    )
+    @Builder.Default
+    private List<MemberEntity> members = List.of();
 
 }
