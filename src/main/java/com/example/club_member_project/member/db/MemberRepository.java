@@ -8,7 +8,5 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     // 동아리별 회원 목록
     List<MemberEntity> findByClubId(Long clubId);
-
-    // 동아리별 회원 수
-    long countByClubId(Long clubId);
+    
 }
