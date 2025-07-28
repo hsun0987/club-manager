@@ -16,6 +16,7 @@ public class ClubService {
 
     private final ClubRepository clubRepository;
 
+    // 동아리 생성
     public ClubEntity create(
             ClubRequest clubRequest
     ){
@@ -27,10 +28,22 @@ public class ClubService {
         return clubRepository.save(entity);
     }
 
-    public List<ClubEntity> getAllClubs() {
-        return clubRepository.findAll();
+    // 동아리 전체 조회
+    public List<ClubDto> getAllClubs() {
+        List<ClubEntity> clubs = clubRepository.findAll();
+
+        return clubs.stream().map(club -> {
+            return ClubDto.builder()
+                    .id(club.getId())
+                    .name(club.getName())
+                    .description(club.getDescription())
+                    .members(club.getMembers()) // 회원 목록도 같이 조회
+                    .build();
+        }).toList();
+
     }
 
+    // 동아리 수정
     public void update(Long id, ClubEntity updateClub) {
         ClubEntity existing = clubRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Club not found"));
@@ -41,6 +54,7 @@ public class ClubService {
         clubRepository.save(existing);
     }
 
+    // 동아리 삭제
     public void delete(Long id) {
         ClubEntity club = clubRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Club not found"));

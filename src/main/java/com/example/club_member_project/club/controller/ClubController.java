@@ -1,6 +1,7 @@
 package com.example.club_member_project.club.controller;
 
 import com.example.club_member_project.club.db.ClubEntity;
+import com.example.club_member_project.club.model.ClubDto;
 import com.example.club_member_project.club.model.ClubRequest;
 import com.example.club_member_project.club.service.ClubService;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +58,7 @@ public class ClubController {
 
     // 동아리 목록 조회
     @GetMapping("")
-    public List<ClubEntity> getAllClubs(){
+    public List<ClubDto> getAllClubs(){
         return clubService.getAllClubs();
     }
 }

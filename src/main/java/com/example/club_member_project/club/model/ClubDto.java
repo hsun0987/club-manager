@@ -22,5 +22,5 @@ public class ClubDto {
 
     private String description;
 
-    // private List<MemberEntity> members = List.of();
+    private List<MemberEntity> members = List.of();
 }
